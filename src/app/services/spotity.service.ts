@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 /* HttpClient porder consumir servicios, HttpHeaders configurar los header la petición ejemplo agregar token*/
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-/*poder mapuear la información que solo necesito de la llamada del servicio
+
+/*poder mapear la información que solo necesito de la llamada del servicio con map
  --se puede utilizar la propiedad map solo para filtrar los datos que se necesitan y
- retornarlos.
+ retornarlos, en este caso como es una sola linea de codigo la funcion flecha no necesita return.
 */
 import { map } from 'rxjs/operators';
 
@@ -22,7 +23,7 @@ export class SpotityService {
   getQuery(query: string) {
     const url = `https://accounts.spotify.com/v1/${query}`;
     const headers = new HttpHeaders({
-      'Autorization': 'token'
+      'Autorization': 'Beaber token'
     });
     return this.http.get(url, { headers });
   }

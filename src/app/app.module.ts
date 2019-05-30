@@ -21,6 +21,7 @@ import { ROUTER } from './components/app.routes';
 import { SpotityService } from './services/spotity.service';
 /*pipes le da formato a los caracteres y permite realizar validaciones */
 import { NoimagePipe } from './pipes/noimage.pipe';
+import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { NoimagePipe } from './pipes/noimage.pipe';
     SearchComponent,
     ArtistaComponent,
     NavbarComponent,
-    NoimagePipe
+    NoimagePipe,
+    TarjetasComponent
   ],
   imports: [
     BrowserModule,
