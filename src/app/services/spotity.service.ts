@@ -14,12 +14,10 @@ export class SpotityService {
   constructor(private http: HttpClient) { }
 
   getNewReleases() {
-    const headers = new HttpHeaders ({
-        'Autorization': 'token'
+    const headers = new HttpHeaders({
+      'Autorization': 'token'
     });
-    this.http.get(this.RUTA, { headers }).subscribe(dato => {
-      console.log(dato);
-    });
+    return this.http.get(this.RUTA, { headers });
   }
 }
 /*

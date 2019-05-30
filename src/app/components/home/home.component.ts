@@ -7,27 +7,29 @@ import { SpotityService } from '../../services/spotity.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styles: []
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-paises: any[] = [];
-/*el constructor que esta en comentario muestra como se consume el servicio por get y
-  se asigna a la variable de paises: any[]=[];*/
- /*  constructor(private http: HttpClient) {
-    console.log('llamado home');
-    this.http.get('https://restcountries.eu/rest/v2/lang/es')
-    .subscribe((respuesta: any[] ) => {
-      this.paises = respuesta;
-      console.log(respuesta);
+  nuevasCanciones: any[] = [];
+  constructor(private spotity: SpotityService) {
+    /*se realiza el suscribe en este punto par determinar cuando finaliza y mostrar un cargando.*/
+    this.spotity.getNewReleases().subscribe((datos: any) => {
+      this.nuevasCanciones = datos.albums.item;
+      console.log(datos.albums.item);
     });
-   } */
-
-   constructor(private spotity: SpotityService) {
-
-   }
+  }
 
   ngOnInit() {
   }
-
 }
+
+/*el constructor que esta en comentario muestra como se consume el servicio por get y
+   se asigna a la variable de paises: any[]=[];*/
+/*  constructor(private http: HttpClient) {
+   console.log('llamado home');
+   this.http.get('https://restcountries.eu/rest/v2/lang/es')
+   .subscribe((respuesta: any[] ) => {
+     this.paises = respuesta;
+     console.log(respuesta);
+   });
+  } */
