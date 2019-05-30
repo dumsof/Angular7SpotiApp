@@ -19,6 +19,8 @@ import { from } from 'rxjs';
 import { ROUTER } from './components/app.routes';
 /*se importa el archivo que contiene los servicios para poderlos utilizar*/
 import { SpotityService } from './services/spotity.service';
+/*pipes le da formato a los caracteres y permite realizar validaciones */
+import { NoimagePipe } from './pipes/noimage.pipe';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { SpotityService } from './services/spotity.service';
     HomeComponent,
     SearchComponent,
     ArtistaComponent,
-    NavbarComponent
+    NavbarComponent,
+    NoimagePipe
   ],
   imports: [
     BrowserModule,

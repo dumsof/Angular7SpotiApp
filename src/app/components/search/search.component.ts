@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { SpotityService } from '../../services/spotity.service';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html'
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
+  artistas: any[] = [];
+  constructor(private spotity: SpotityService) { }
 
-  constructor() { }
-
-  ngOnInit() {
+  buscar(termino: string) {
+    this.spotity.getArtista(termino).subscribe((datos: any) => {
+      this.artistas = datos;
+      console.log(datos);
+    });
   }
-
 }

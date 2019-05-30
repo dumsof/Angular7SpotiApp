@@ -14,8 +14,8 @@ export class HomeComponent implements OnInit {
   constructor(private spotity: SpotityService) {
     /*se realiza el suscribe en este punto par determinar cuando finaliza y mostrar un cargando.*/
     this.spotity.getNewReleases().subscribe((datos: any) => {
-      this.nuevasCanciones = datos.albums.item;
-      console.log(datos.albums.item);
+      this.nuevasCanciones = datos;
+      console.log(datos);
     });
   }
 
