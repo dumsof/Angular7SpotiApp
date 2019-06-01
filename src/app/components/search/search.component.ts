@@ -10,7 +10,7 @@ export class SearchComponent {
   constructor(private spotity: SpotityService) { }
 
   buscar(termino: string) {
-    this.spotity.getArtista(termino).subscribe((datos: any) => {
+    this.spotity.getArtistas(termino).subscribe((datos: any) => {
       this.artistas = datos;
       console.log(datos);
     });

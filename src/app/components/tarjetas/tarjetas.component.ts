@@ -5,11 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './tarjetas.component.html',
   styleUrls: ['./tarjetas.component.css']
 })
-export class TarjetasComponent implements OnInit {
+export class TarjetasComponent {
   @Input() items: any[] = [];
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

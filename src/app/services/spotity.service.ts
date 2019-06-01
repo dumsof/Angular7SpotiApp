@@ -16,25 +16,24 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SpotityService {
-  RUTA: string = 'https://accounts.spotify.com/api/token/';
-  RUTA_BUSCAR_ARTISTA: string = 'https://accounts.spotify.com/v1/search/';
+
   constructor(private http: HttpClient) { }
 
   getQuery(query: string) {
-    const url = `https://accounts.spotify.com/v1/${query}`;
+    const url = `https://api.spotify.com/v1/${query}`;
     const headers = new HttpHeaders({
-      'Autorization': 'Beaber token'
+      'Authorization': 'Bearer BQCOq4EKjq7okr0yoqG4mP_UFKuhMLEa1ogyHXq0m8WgXo3EaLtUD6EXXeGF5REyxdWbMYCwNjBsCHxvWkk'
     });
     return this.http.get(url, { headers });
   }
 
   getNewReleases() {
-    return this.getQuery('browse/new-releases?limit=20')
+    return this.getQuery('browse/new-releases?limit=15')
       .pipe(map(datosNecesarios => datosNecesarios['albums'].items));
   }
 
-  getArtista(termino: string) {
-    return this.getQuery(`search?q=${termino}&type=artist&limit=15`)
+  getArtistas(termino: string) {
+    return this.getQuery(`search?query=${termino}&type=artist&offset=0&limit=20`)
       .pipe(map(datosNecesarios => datosNecesarios['artists'].items));
     /*   const headers = new HttpHeaders({
         'Autorization': 'token'
