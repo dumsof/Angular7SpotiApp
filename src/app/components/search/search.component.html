@@ -3,7 +3,8 @@
         <input type="text" #termino (keyup)="buscar(termino.value)" class="form-control" placeholder="Buscar Artista..">
     </div>
 </div>
-<app-tarjetas [items]="artistas" class="m-5"></app-tarjetas>
+<app-loading class="m-5" *ngIf="cargando"></app-loading>
+<app-tarjetas *ngIf="!cargando" [items]="artistas"></app-tarjetas>
 <!-- <div class="card-columns m-5">
     <div *ngFor="let artista of artistas" class="card">
         <img [src]="artista.images | noimage" class="card-img-top" alt="...">
