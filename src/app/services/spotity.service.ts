@@ -22,7 +22,7 @@ export class SpotityService {
   getQuery(query: string) {
     const url = `https://api.spotify.com/v1/${query}`;
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQDzMkxDEQSdxMdrjWUqMi5aIpbSJ7AHYRy9cALPNsDQiwgK1i2V8RsKEn6h_EMa_uz9ORbmWOa_D0jmfEA'
+      'Authorization': 'Bearer BQCCT6lfuCKQSFXROtciplMyGdFaiH0lzuTtV_KmaiX7rklcR3wbscqxL5wsXm_912dTY4eH3-kuo1FUCVY'
     });
     return this.http.get(url, { headers });
   }
@@ -42,6 +42,17 @@ export class SpotityService {
         .pipe(map((datosNecesarios: any) => datosNecesarios['artists'].items
         )); */
   }
+
+  getArtista(id: string) {
+    /*no se utiliza el pipe y map para sacar información x que esta ya contiene lo que se necesita*/
+    return this.getQuery(`artists/${id}`);
+  }
+
+  getTopTracks(id: string) {
+    return this.getQuery(`artists/${ id }/top-tracks?country=us`)
+    .pipe(map(datos => datos['tracks']));
+  }
+
 }
 /*
 Ruta para obtener el token de spoty

@@ -1,5 +1,5 @@
 <div class="card-columns m-5">
-    <div *ngFor="let item of items" class="card">
+    <div (click)="verArtista(item)" *ngFor="let item of items" class="card puntero">
         <!--  noimage: este es un pipe que se utiliza para validar si la imagen es nula -->
         <img [src]="item.images | noimage" class="card-img-top" alt="Card image cap">
         <div class="card-body">
