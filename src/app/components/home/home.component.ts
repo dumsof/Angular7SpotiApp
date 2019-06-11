@@ -12,13 +12,20 @@ import { SpotityService } from '../../services/spotity.service';
 export class HomeComponent implements OnInit {
   nuevasCanciones: any[] = [];
   cargando: boolean;
+  error: boolean;
+  mensajeError: string;
   constructor(private spotity: SpotityService) {
     this.cargando = true;
+    this.error = false;
     /*se realiza el suscribe en este punto par determinar cuando finaliza y mostrar un cargando.*/
     this.spotity.getNewReleases().subscribe((datos: any) => {
       this.nuevasCanciones = datos;
       this.cargando = false;
       console.log(datos);
+    }, (errorServicio) => {
+      this.cargando = false;
+      this.error = true;
+      this.mensajeError = errorServicio.error.error.message;
     });
   }
 
